@@ -9,11 +9,11 @@
 <body>
     <h1>This is a php page</h1>
     <?php
-        for ($i=1; $i<10; $i++) {
+        for ($i=1; $i<=10; $i++) {
             if ($i%2 === 0) {
-                echo "<div style='color:red' id=".$i."></div>";
+                echo "<div style='color:red' id=".$i.">This is div ".$i."</div>";
             } else {
-                echo "<div id=".$i."></div>";
+                echo "<div id=".$i.">This is div ".$i."</div>";
             }
         }
     ?>
