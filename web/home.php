@@ -14,7 +14,15 @@ $current = 'home';
 </head>
 <body>
     <?php include 'header.php' ?>
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+        <div class="col-sm-8 text-left">
     <h2>Home</h2>
     <p>Welcome, I am Zoe Miner. This site will be my directory for my projects in my Web Engineering Class.</p>
+    </div>
+    <div class="col-sm-2 sidenav">
+    </div>
 </body>
 </html>
