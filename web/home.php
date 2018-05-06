@@ -23,6 +23,8 @@ $current = 'home';
                 <div class="col-sm-8 text-left">
                     <h2>Home</h2>
                     <p>Welcome, I am Zoe Miner. This site will be my directory for my projects in my Web Engineering Class.</p>
+                    <p>My biggest hobby is reading. I mostly like reading fantasy, a favorite of mine is Arthurian stories. My favorite seris is the Squire's Tales by Geral Morris</p>
+                    <img src='assests/book.jpg'>
                 </div>
                 <div class="col-sm-2 sidenav">
                 </div>
