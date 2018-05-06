@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$current = 'home';
+$current = 'projects';
 ?>
     <html lang="en">
 
@@ -11,7 +11,7 @@ $current = 'home';
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel='stylesheet' href='main.css'>
-        <title>Home</title>
+        <title>Projects</title>
     </head>
 
     <body>
@@ -21,8 +21,8 @@ $current = 'home';
                 <div class="col-sm-2 sidenav">
                 </div>
                 <div class="col-sm-8 text-left">
-                    <h2>Home</h2>
-                    <p>Welcome, I am Zoe Miner. This site will be my directory for my projects in my Web Engineering Class.</p>
+                    <h2>Projects</h2>
+                    <p>Coming Soon</p>
                 </div>
                 <div class="col-sm-2 sidenav">
                 </div>
