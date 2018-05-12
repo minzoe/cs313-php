@@ -1,6 +1,7 @@
 <?php
 session_start();
 $cart[] = $_SESSION['cart'];
+var_dump($cart);
 ?>
 <!DOCTYPE html>
 <html>
