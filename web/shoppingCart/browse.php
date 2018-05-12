@@ -16,7 +16,7 @@ session_start();
                 
                 xmlhttp.open("GET", "setCart.php?q=" + $item, true);
                 xmlhttp.send();
-                alert(item + " has been added to the cart");
+                alert($item + " has been added to the cart");
             }
         </script>
     </head>
