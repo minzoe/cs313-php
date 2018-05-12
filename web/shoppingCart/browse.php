@@ -15,13 +15,12 @@ session_start();
             xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4) {
-                    document.getElementById('content').innerHTML = xmlhttp.responseText;
+                    alert($item + " has been added to the cart");
                 }
             }
             function addToCart($item) {
                 xmlhttp.open("POST", "setCart.php");
-                xmlhttp.send('item='.$item);
-                alert($item + " has been added to the cart");
+                xmlhttp.send('item=' + $item);
             }
         </script>
     </head>
