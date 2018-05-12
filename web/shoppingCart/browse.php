@@ -18,7 +18,7 @@ session_start();
                         alert($item + " has been added to the cart");
                     }
                 }                
-                xmlhttp.open("POST", "setCart.php", true);
+                xmlhttp.open("POST", "setCart.php", false);
                 xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xmlhttp.send('item=' + $item);
             }

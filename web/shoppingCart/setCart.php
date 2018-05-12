@@ -1,6 +1,6 @@
 <?php
 
-$item = filter_input(INPUT_REQUEST, 'item', FILTER_SANITIZE_STRING);
+$item = $_REQUEST["item"];
 
 array_push($_SESSION['cart'], $item);
 ?>
