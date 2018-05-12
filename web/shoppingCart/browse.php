@@ -14,8 +14,15 @@ session_start();
             function addToCart($item) {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
-                    alert($item + "added to Cart");
-                };
+                    if (xmlhttp.readyState === 4) {
+                        var response = JSON.parse(xmlhttp.responseText);
+                        if (xmlhttp.status === 200 && response.status === 'OK') {
+                            console.log('successful');
+                        } else {
+                            console.log('failed');
+                        }
+                    }
+                }
                 xmlhttp.open("POST", "setCart.php?q=" + $item, true);
                 xmlhttp.send();
             }
