@@ -11,15 +11,15 @@ session_start();
         <link rel='stylesheet' href='../main.css'>
         <title>Browse Items</title>
         <script>
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState === 4) {
-                    alert($item + " has been added to the cart");
-                }
-            }
-            function addToCart($item) {
+            function addToCart($item) {   
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState === 4) {
+                        alert($item + " has been added to the cart");
+                    }
+                }                
                 xmlhttp.open("POST", "setCart.php", true);
+                xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xmlhttp.send('item=' + $item);
             }
         </script>
