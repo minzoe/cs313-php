@@ -23,7 +23,9 @@ session_start();
     
     <body>
         <nav>
-            
+            <ul>
+                <li><a href="shoppingCart.php">Cart</a></li>
+            </ul>
         </nav>
          <section>
             <div>
