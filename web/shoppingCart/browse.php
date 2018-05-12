@@ -14,12 +14,12 @@ session_start();
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4) {
+                if (xmlhttp.readyState === 4) {
                     alert($item + " has been added to the cart");
                 }
             }
             function addToCart($item) {
-                xmlhttp.open("POST", "setCart.php");
+                xmlhttp.open("POST", "setCart.php", true);
                 xmlhttp.send('item=' + $item);
             }
         </script>
