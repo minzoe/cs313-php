@@ -14,16 +14,13 @@ session_start();
             function addToCart($item) {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState === 4) {
-                        var response = JSON.parse(xmlhttp.responseText);
-                        if (xmlhttp.status === 200 && response.status === 'OK') {
-                            console.log('successful');
-                        } else {
-                            console.log('failed');
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
                         }
-                    }
+                    };
                 }
-                xmlhttp.open("POST", "setCart.php?q=" + $item, true);
+                xmlhttp.open("GET", "setCart.php?q=" + $item, true);
                 xmlhttp.send();
             }
         </script>
