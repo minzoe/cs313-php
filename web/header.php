@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav">
             <li <?php if($current=="home" ) { ?> class="active"
                 <?php   }  ?> >
-                <a href='home.php'>Home</a>
+                <a href='index.php'>Home</a>
             </li>
             <li <?php if($current=="projects" ) { ?> class="active"
                 <?php   }  ?> >

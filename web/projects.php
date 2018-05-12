@@ -22,7 +22,9 @@ $current = 'projects';
                 </div>
                 <div class="col-sm-8 text-left">
                     <h2>Projects</h2>
-                    <p>Coming Soon</p>
+                    <ul>
+                        <li><a href="shoppingCart/browse">Shopping</a></li>
+                    </ul>
                 </div>
                 <div class="col-sm-2 sidenav">
                 </div>
