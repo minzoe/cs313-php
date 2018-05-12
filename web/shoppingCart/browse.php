@@ -13,15 +13,10 @@ session_start();
         <script>
             function addToCart($item) {
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("txtHint").innerHTML = this.responseText;
-                        }
-                    };
-                }
+                
                 xmlhttp.open("GET", "setCart.php?q=" + $item, true);
                 xmlhttp.send();
+                alert(item + " has been added to the cart");
             }
         </script>
     </head>
