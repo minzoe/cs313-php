@@ -11,11 +11,16 @@ session_start();
         <link rel='stylesheet' href='../main.css'>
         <title>Browse Items</title>
         <script>
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4) {
+                    document.getElementById('content').innerHTML = xmlhttp.responseText;
+                }
+            }
             function addToCart($item) {
-                var xmlhttp = new XMLHttpRequest();
-                
-                xmlhttp.open("GET", "setCart.php?q=" + $item, true);
-                xmlhttp.send();
+                xmlhttp.open("POST", "setCart.php");
+                xmlhttp.send('item='.$item);
                 alert($item + " has been added to the cart");
             }
         </script>
@@ -31,13 +36,13 @@ session_start();
             <div>
                 <h3>Ladle</h3>
                 <p>Ladle Description</p>
-                <button onclick="addToCart('Ladle')">Add to Cart</button>
+                <button onclick="addToCart('Ladle');">Add to Cart</button>
             </div>
              
              <div>
                 <h3>Spoon</h3>
                 <p>Spoon Description</p>
-                <button>Add to Cart</button>
+                <button onclick="addToCart('Spoon');">Add to Cart</button>
             </div>
         </section>
     </body>
