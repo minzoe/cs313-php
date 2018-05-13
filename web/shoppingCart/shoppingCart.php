@@ -30,8 +30,8 @@ $cart = $_SESSION['cart'];
        <?php 
        foreach ($cart as $item) {
            echo $item;
-           echo ' <button onclick="removeItem("';
-           echo $item."')'>Remove</button><br>";
+           echo ' <button onclick="removeItem(';
+           echo "'".$item."')".'">Remove</button><br>';
        }
        ?>
     </body>
