@@ -20,7 +20,7 @@ var_dump($cart);
                         alert(item + " has been removed from the cart");
                         location.reload();
                     }
-                }                
+                };                
                 xmlhttp.open("POST", "removeCart.php", true);
                 xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xmlhttp.send('item=' + item);
