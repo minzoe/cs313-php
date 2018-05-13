@@ -16,7 +16,7 @@ $cart = $_SESSION['cart'];
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState === 4) {
-                        alert($item + " has been removed from the cart");
+                        alert(item + " has been removed from the cart");
                     }
                 }                
                 xmlhttp.open("POST", "removeCart.php", true);
