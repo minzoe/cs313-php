@@ -11,13 +11,26 @@ $cart = $_SESSION['cart'];
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel='stylesheet' href='../main.css'>
         <title>Shopping Cart</title>
+        <script>
+            function removeItem(item) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState === 4) {
+                        alert($item + " has been removed from the cart");
+                    }
+                }                
+                xmlhttp.open("POST", "removeCart.php", true);
+                xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xmlhttp.send('item=' + item);
+            }
+        </script>
     </head>
     
     <body>
        <?php 
        foreach ($cart as $item) {
            echo $item;
-           echo "<button onclick='removeItem(".$item.")'>Remove</button><br>";
+           echo " <button onclick='removeItem(".$item.")'>Remove</button><br>";
        }
        ?>
     </body>
