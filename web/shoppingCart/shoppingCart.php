@@ -1,7 +1,6 @@
 <?php
 session_start();
 $cart = $_SESSION['cart'];
-var_dump($cart);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +16,8 @@ var_dump($cart);
     <body>
        <?php 
        foreach ($cart as $item) {
-           echo $item."<br>";
+           echo $item;
+           echo "<button onclick='removeItem(".$item.")'>Remove</button><br>";
        }
        ?>
     </body>
