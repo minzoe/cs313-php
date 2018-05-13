@@ -1,6 +1,5 @@
 <?php
 session_start();
 $item = $_POST["item"];
-var_dump($item);
-exit();
+unset($_SESSION['cart'][$item]);
 ?>
