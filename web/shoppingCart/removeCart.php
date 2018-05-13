@@ -2,6 +2,9 @@
 session_start();
 $item = $_POST["item"];
 
-unset($_SESSION['cart'][$item]);
-    
+foreach ($_SESSION['cart'] as &$value) {
+    if ($value === $item) {
+        unset($_SESSION['cart'][$item]);
+    }
+}
 ?>
