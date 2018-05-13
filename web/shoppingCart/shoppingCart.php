@@ -18,6 +18,7 @@ var_dump($cart);
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState === 4) {
                         alert(item + " has been removed from the cart");
+                        <?php var_dump($_SESSION['cart']); ?>
                     }
                 }                
                 xmlhttp.open("POST", "removeCart.php", true);
