@@ -15,7 +15,7 @@ session_start();
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
                     if (xmlhttp.readyState === 4) {
-                        alert($item + " has been added to the cart");
+                        alert(item + " has been added to the cart");
                     }
                 }                
                 xmlhttp.open("POST", "setCart.php", true);
