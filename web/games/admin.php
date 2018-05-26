@@ -24,8 +24,8 @@ catch (PDOException $ex)
 }
 
 if ($_SESSION['user'] != NULL) {
-    echo 'Tsing';
     $id = $_SESSION['user']['usersId'];
+    echo $id;
     $query = "SELECT title FROM games WHERE usersId = :id";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":id", $id, PDO::PARAM_STR);
