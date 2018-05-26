@@ -23,14 +23,13 @@ catch (PDOException $ex)
   die();
 }
 
-if (isset($_SESSION['usersID'])) {
+if (isset($_SESSION['usersId'])) {
     $id = $_SESSION['usersId'];
     $userQ = "SELECT username, email FROM users WHERE u.userId = :id";
     $stmt = $db->prepare($userQ);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($user);
 }
 
 if (isset($_POST['Submit'])) {
