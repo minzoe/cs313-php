@@ -43,7 +43,7 @@ if ($_SESSION['user'] != NULL) {
     $stmt->execute();
     $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    $savedQuery = "SELECT title FROM users u INNER JOIN savedGames s ON u.usersid = s.usersid INNER JOIN games g ON s.gamesid = g.gamesid WHERE usersid = :id";
+    $savedQuery = "SELECT title FROM users u INNER JOIN savedGames s ON u.usersid = s.usersid INNER JOIN games g ON s.gamesid = g.gamesid WHERE u.usersid = :id";
     $state = $db->prepare($savedQuery);
     $state->bindValue(":id", $id);
     $state->execute();
