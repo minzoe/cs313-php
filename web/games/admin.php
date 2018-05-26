@@ -24,9 +24,9 @@ catch (PDOException $ex)
 }
 
 if ($_SESSION['user'] != NULL) {
-    $id = $_SESSION['user']['usersId'];
+    $id = $_SESSION['user']['usersid'];
     var_dump($_SESSION['user']);
-    $query = "SELECT title FROM games WHERE usersId = :id";
+    $query = "SELECT title FROM games WHERE usersid = :id";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":id", $id, PDO::PARAM_STR);
     $stmt->execute();
