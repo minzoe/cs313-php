@@ -38,7 +38,7 @@ if (isset($_POST['Submit'])) {
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['userid'] = $stmt-fetch(PDO::FETCH_NUM);
+    $_SESSION['userid'] = $stmt-fetch(PDO::FETCH_ASSOC);
     echo 'Testing';
     exit();
 }
