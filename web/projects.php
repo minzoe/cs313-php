@@ -24,6 +24,7 @@ $current = 'projects';
                     <h2>Projects</h2>
                     <ul>
                         <li><a href="shoppingCart/browse.php">Shopping</a></li>
+                        <li><a href="games/index.php">Final Project</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-2 sidenav">
@@ -31,6 +32,7 @@ $current = 'projects';
             </div>
             <footer class="container-fluid text-center">
             </footer>
+        </div>
     </body>
 
     </html>
