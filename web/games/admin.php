@@ -25,8 +25,8 @@ catch (PDOException $ex)
 
 if (isset($_SESSION['usersID'])) {
     $id = $_SESSION['usersId'];
-    $query = "SELECT username, email, title FROM users u INNER JOIN savedGames s ON u.usersId = s.usersId INNER JOIN games g ON s.gamesId = g.gamesId WHERE u.userId = :id";
-    $stmt = $db->prepare($query);
+    $userQ = "SELECT username, email FROM users WHERE u.userId = :id";
+    $stmt = $db->prepare($userQ);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
