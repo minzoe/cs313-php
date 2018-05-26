@@ -1,4 +1,4 @@
-PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin
+PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;
 heroku pg:psql
 
 CREATE TABLE users

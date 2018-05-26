@@ -45,7 +45,8 @@ if (isset($_SESSION['searchMade'])) {
     $allGames = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
+var_dump($allGames);
+var_dump($searched);
 
 ?>
 <!DOCTYPE html>
