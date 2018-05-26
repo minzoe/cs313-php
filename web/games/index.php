@@ -21,7 +21,7 @@ catch (PDOException $ex)
 }
 
 if (isset($_POST['searchMade'])) {
-    $_SESSION['searchMade'] = $_POST['searchMade'];
+    $_SESSION['searchMade'] = TRUE;
 }
 
 if (isset($_SESSION['searchMade'])) {
@@ -44,9 +44,6 @@ if (isset($_SESSION['searchMade'])) {
     $stmt->execute();
     $allGames = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-var_dump($allGames);
-var_dump($searched);
 
 ?>
 <!DOCTYPE html>
@@ -71,12 +68,10 @@ var_dump($searched);
             <?php 
                 if(isset($_SESSION['searchMade'])) {
                     forEach ($searched as $game) {
-                        echo $game;
                         echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
                         }
                 } else {
                     forEach ($allGames as $game) {
-                        echo $game;
                         echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
                         }
                 }
