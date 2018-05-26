@@ -7,7 +7,7 @@
             </li>
             <li <?php if($current=="user" ) { ?> class="active"
                 <?php   }  ?> >
-                <a href='admin.php'>Projects</a>
+                <a href='admin.php'>User</a>
             </li>
     </nav>
 </header>

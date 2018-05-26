@@ -32,6 +32,14 @@ if (isset($_SESSION['usersID'])) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+if (isset($_POST['Submit'])) {
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $query = "SELECT userId FROM users WHERE email = :email";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $_SESSION['userid'] = $stmt-fetch(PDO::FETCH_NUM);
+}
    
 ?>
 <!DOCTYPE html>
@@ -50,6 +58,12 @@ if (isset($_SESSION['usersID'])) {
             <?php 
                 if (isset($_SESSION['usersId'])) {
                     echo "<h2>Users</h2> <p>Username: $user[username]</p> <p>Email: $user[email]</p>";
+                } else {
+                    echo "<form method='post' action='admin.php'>"
+                    . "<label>Email:</lable><input type='email' name='email'>"
+                            . "<label>Password:</label><input type='password' name='pass'>"
+                            . "<input type='submit' name='Submit'>"
+                            . "</form>";
                 }
             ?>
         </div>
