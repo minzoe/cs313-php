@@ -76,7 +76,9 @@ if (isset($_POST['Submit'])) {
             <?php
                 if (isset($_SESSION['user'])) {
                     echo "<h2>Made Games</h2>";
-                    echo "<p>$user[title]</p>";
+                    foreach ($games as $game) {
+                        echo "<p>$game[title]</p>";
+                    }
                 }
             ?>
         </div>
