@@ -54,7 +54,7 @@ if (isset($_SESSION['searchMade'])) {
     
     <body>
         <h1>Card Games</h1>
-        <form method="POST" action="index.php">
+        <form method="POST">
             <label>Search by:</label>
             <label>Number of Players:</label><input name="players" type="number">
             <label>Time to Play:</label><input name="time" type="number">
