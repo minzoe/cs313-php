@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+$current = 'home';
+
 try
 {
     $dbUrl = getenv('DATABASE_URL');
@@ -34,7 +37,6 @@ if (isset($_POST['Search'])) {
     $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($searched);
 } else {
     $query = "SELECT title, description FROM games";
     $stmt = $db->prepare($query);
@@ -47,6 +49,8 @@ if (isset($_POST['Search'])) {
 <html>
     <head>
         <title>Card Games</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">        
+        <link rel='stylesheet' href='main.css'>
     </head>
     
     <body>
