@@ -30,6 +30,7 @@ if (isset($_SESSION['usersID'])) {
     $stmt->bindValue(":id", $id);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    var_dump($user);
 }
 
 if (isset($_POST['Submit'])) {
