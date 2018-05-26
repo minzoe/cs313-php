@@ -28,6 +28,11 @@ $cart = $_SESSION['cart'];
     </head>
     
     <body>
+        <nav>
+            <ul>
+                <li><a href="browse.php">Browse</a></li>
+            </ul>
+        </nav>
        <?php 
        foreach ($cart as $item) {
            echo $item;
