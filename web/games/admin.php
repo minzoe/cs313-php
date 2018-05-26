@@ -23,25 +23,25 @@ catch (PDOException $ex)
   die();
 }
 
-if (isset($_SESSION['userId'])) {
-    $id = $_SESSION['userId'];
-    $userQ = "SELECT username, email FROM users WHERE usersId = :id";
-    $stmt = $db->prepare($userQ);
-    $stmt->bindValue(":id", $id, PDO::PARAM_STR);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($user);
+if (isset($_SESSION['user'])) {
+//    $id = $_SESSION['user'];
+//    $userQ = "SELECT username, email FROM users WHERE usersId = :id";
+//    $stmt = $db->prepare($userQ);
+//    $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+//    $stmt->execute();
+//    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+//    var_dump($user);
 }
 
 if (isset($_POST['Submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    $query = "SELECT usersId FROM users WHERE email = :email AND password = :password limit 1";
+    $query = "SELECT usersId, username, email FROM users WHERE email = :email AND password = :password";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['userId'] = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
 }
    
 ?>
@@ -59,8 +59,8 @@ if (isset($_POST['Submit'])) {
         
         <div>
             <?php 
-                if (isset($_SESSION['usersId'])) {
-                    echo "<h2>Users</h2> <p>Username: $user[username]</p> <p>Email: $user[email]</p>";
+                if (isset($_SESSION['user'])) {
+                    echo "<h2>Users</h2> <p>Username: ".$_SESSION[user][username]."</p> <p>Email: ".$_SESSION[user][email]."</p>";
                 } else {
                     echo "<form method='post' action='admin.php'>"
                     . "<label>Email:</lable><input type='email' name='email'>"
