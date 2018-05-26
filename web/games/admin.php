@@ -23,6 +23,17 @@ catch (PDOException $ex)
   die();
 }
 
+if (isset($_POST['Submit'])) {
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+    $query = "SELECT usersId, username, email FROM users WHERE email = :email AND password = :password";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+    $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+    $stmt->execute();
+    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 if ($_SESSION['user'] != NULL) {
     $id = $_SESSION['user']['usersid'];
     var_dump($_SESSION['user']);
@@ -34,16 +45,7 @@ if ($_SESSION['user'] != NULL) {
     var_dump($games);
 }
 
-if (isset($_POST['Submit'])) {
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    $query = "SELECT usersId, username, email FROM users WHERE email = :email AND password = :password";
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
-    $stmt->bindValue(":password", $password, PDO::PARAM_STR);
-    $stmt->execute();
-    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
-}
+
    
 ?>
 <!DOCTYPE html>
