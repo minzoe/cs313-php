@@ -69,15 +69,17 @@ var_dump($searched);
         
         <div>
             <?php 
-//                if(isset($_SESSION['searchMade'])) {
-//                    forEach ($game as $searched) {
-//                        echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
-//                        }
-//                } else {
-                    forEach ($game as $allGames) {
+                if(isset($_SESSION['searchMade'])) {
+                    forEach ($game as $searched) {
+                        echo $game;
                         echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
                         }
-//                }
+                } else {
+                    forEach ($game as $allGames) {
+                        echo $game;
+                        echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
+                        }
+                }
             ?>
         </div>
         
