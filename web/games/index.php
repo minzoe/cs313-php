@@ -27,12 +27,12 @@ if (isset($_POST['Search'])) {
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
     $relaxed = filter_input(INPUT_POST, 'relax', FILTER_VALIDATE_BOOLEAN);
     echo 'start qurery';
-    $query = "SELECT title, description FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :realaxed";
+    $query = "SELECT title, description FROM games WHERE numOfPlayers = :players";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":players", $players, PDO::PARAM_INT);
-    $stmt->bindValue(":time", $time, PDO::PARAM_INT);
-    $stmt->bindValue(":decks", $decks, PDO::PARAM_INT);
-    $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
+//    $stmt->bindValue(":time", $time, PDO::PARAM_INT);
+//    $stmt->bindValue(":decks", $decks, PDO::PARAM_INT);
+//    $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Testing';
