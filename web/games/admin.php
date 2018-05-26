@@ -43,6 +43,7 @@ if (isset($_SESSION['usersID'])) {
     </head>
     
     <body>
+        <?php include 'header.php' ?>
         <h1>User Admin</h1>
         
         <div>
