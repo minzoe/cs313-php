@@ -47,7 +47,7 @@ if ($_SESSION['user'] != NULL) {
     $state = $db->prepare($savedQuery);
     $state->bindValue(":id", $id);
     $state->execute();
-    $saved = $stat->fetchAll(PDO::FETCH_ASSOC);
+    $saved = $state->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
