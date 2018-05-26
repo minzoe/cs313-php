@@ -26,12 +26,12 @@ if (isset($_POST['Search'])) {
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_NUMBER_INT);
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
     $relaxed = filter_input(INPUT_POST, 'relax', FILTER_VALIDATE_BOOLEAN);
-    $query = "SELECT title, description FROM games WHERE numOfPlayers = :players AND timeLength = :time OR IS NULL";
+    $query = "SELECT title, description FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":players", $players, PDO::PARAM_INT);
     $stmt->bindValue(":time", $time, PDO::PARAM_INT);
-//    $stmt->bindValue(":decks", $decks, PDO::PARAM_INT);
-//    $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
+    $stmt->bindValue(":decks", $decks, PDO::PARAM_INT);
+    $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
     var_dump($searched);
@@ -53,11 +53,11 @@ if (isset($_POST['Search'])) {
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
             <label>Search by:</label>
-            <label>Number of Players:</label><input name="players" type="number">
-            <label>Time to Play:</label><input name="time" type="number">
-            <label>Number of Decks Needed</label><input name="decks" type="number">
+            <label>Number of Players:</label><input name="players" type="number" required>
+            <label>Time to Play:</label><input name="time" type="number" required>
+            <label>Number of Decks Needed:</label><input name="decks" type="number" required>
             <label>Relaxed:</label><input name="relax" type="checkbox">
-            <input type="submit" name="Search">
+            <input type="submit" name="Search" required>
         </form>
         
         <div>
