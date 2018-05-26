@@ -23,7 +23,7 @@ catch (PDOException $ex)
   die();
 }
 
-if (isset($_SESSION['user'])) {
+if ($_SESSION['user'] != NULL) {
     echo 'Tsing';
     $id = $_SESSION['user']['usersId'];
     $query = "SELECT title FROM games WHERE usersId = :id";
