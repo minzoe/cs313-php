@@ -25,7 +25,7 @@ catch (PDOException $ex)
 
 if (isset($_SESSION['usersId'])) {
     $id = $_SESSION['usersId'];
-    $userQ = "SELECT username, email FROM users WHERE userId = :id";
+    $userQ = "SELECT username, email FROM users WHERE usersId = :id";
     $stmt = $db->prepare($userQ);
     $stmt->bindValue(":id", $id, PDO::PARAM_INT);
     $stmt->execute();
