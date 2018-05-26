@@ -35,6 +35,8 @@ if (isset($_SESSION['usersID'])) {
 if (isset($_POST['Submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+    echo 'Test';
+    exit();
     $query = "SELECT usersId FROM users WHERE email = :email AND password = :password limit 1";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
