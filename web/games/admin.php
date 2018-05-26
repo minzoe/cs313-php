@@ -24,7 +24,6 @@ catch (PDOException $ex)
 }
 
 if (isset($_SESSION['usersId'])) {
-    echo 'Testing';
     $id = $_SESSION['usersId'];
     $userQ = "SELECT username, email FROM users WHERE userId = :id";
     $stmt = $db->prepare($userQ);
