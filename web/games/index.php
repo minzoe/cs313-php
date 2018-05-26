@@ -36,7 +36,7 @@ if (isset($_POST['Search'])) {
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Testing';
-    exit;
+//    exit;
 } else {
     $query = "SELECT title, description FROM games";
     $stmt = $db->prepare($query);
