@@ -23,8 +23,8 @@ catch (PDOException $ex)
   die();
 }
 
-if (isset($_SESSION['usersId'])) {
-    $id = $_SESSION['usersId'];
+if (isset($_SESSION['userId'])) {
+    $id = $_SESSION['userId'];
     $userQ = "SELECT username, email FROM users WHERE usersId = :id";
     $stmt = $db->prepare($userQ);
     $stmt->bindValue(":id", $id, PDO::PARAM_STR);
@@ -41,7 +41,7 @@ if (isset($_POST['Submit'])) {
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['usersId'] = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['userId'] = $stmt->fetch(PDO::FETCH_ASSOC);
 }
    
 ?>
