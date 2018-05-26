@@ -20,11 +20,8 @@ catch (PDOException $ex)
   die();
 }
 
-if (isset($_POST['searchMade'])) {
-    $_SESSION['searchMade'] = TRUE;
-}
 
-if (isset($_SESSION['searchMade'])) {
+if (isset($_POST['Search'])) {
     $players = filter_input(INPUT_POST, 'players', FILTER_SANITIZE_NUMBER_INT);
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_NUMBER_INT);
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
@@ -54,13 +51,12 @@ if (isset($_SESSION['searchMade'])) {
     
     <body>
         <h1>Card Games</h1>
-        <form method="POST">
+        <form method="POST" action="index.php">
             <label>Search by:</label>
             <label>Number of Players:</label><input name="players" type="number">
             <label>Time to Play:</label><input name="time" type="number">
             <label>Number of Decks Needed</label><input name="decks" type="number">
             <label>Relaxed:</label><input name="relax" type="checkbox">
-            <input type="hidden" name="searchMade">
             <input type="submit" name="Search">
         </form>
         
