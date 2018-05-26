@@ -62,7 +62,7 @@ if (isset($_POST['Search'])) {
         
         <div>
             <?php 
-                if(isset($_SESSION['searchMade'])) {
+                if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
                         echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
                         }
