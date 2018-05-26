@@ -40,7 +40,7 @@ if (isset($_POST['Submit'])) {
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['userid'] = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['usersId'] = $stmt->fetch(PDO::FETCH_ASSOC);
 }
    
 ?>
