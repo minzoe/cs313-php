@@ -34,7 +34,7 @@ if (isset($_SESSION['usersID'])) {
 
 if (isset($_POST['Submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $query = "SELECT userId FROM users WHERE email = :email";
+    $query = "SELECT usersId FROM users WHERE email = :email";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
