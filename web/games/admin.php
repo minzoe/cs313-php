@@ -36,13 +36,18 @@ if (isset($_POST['Submit'])) {
 
 if ($_SESSION['user'] != NULL) {
     $id = $_SESSION['user']['usersid'];
-    var_dump($_SESSION['user']);
+    
     $query = "SELECT title FROM games WHERE usersid = :id";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":id", $id, PDO::PARAM_STR);
     $stmt->execute();
     $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($games);
+    
+    $savedQuery = "SELECT title FROM games g INNER JOIN savedGames s ON usersId = s.usersId WHERE usersId = :id";
+    $state = $db->prepare($savedQuery);
+    $state->bindValue(":id", $id);
+    $state->execute();
+    $saved = $stat->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
@@ -79,7 +84,18 @@ if ($_SESSION['user'] != NULL) {
                 if (isset($_SESSION['user'])) {
                     echo "<h2>Made Games</h2>";
                     foreach ($games as $game) {
-                        echo "<p>$game[title]</p>";
+                        echo "<h3>$game[title]</h3>";
+                    }
+                }
+            ?>
+        </div>
+        
+        <div>
+            <?php
+                if (isset($_SESSION['user'])) {
+                    echo "<h2>Saved Games</h2>";
+                    foreach ($saved as $sgame) {
+                        echo "<h3>$sgame[title]</h3>";
                     }
                 }
             ?>
