@@ -24,13 +24,13 @@ catch (PDOException $ex)
 }
 
 if (isset($_SESSION['user'])) {
-//    $id = $_SESSION['user'];
-//    $userQ = "SELECT username, email FROM users WHERE usersId = :id";
-//    $stmt = $db->prepare($userQ);
-//    $stmt->bindValue(":id", $id, PDO::PARAM_STR);
-//    $stmt->execute();
-//    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-//    var_dump($user);
+    $id = $_SESSION['user']['usersId'];
+    $query = "SELECT title FROM games WHERE usersId = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($games);
 }
 
 if (isset($_POST['Submit'])) {
@@ -73,7 +73,7 @@ if (isset($_POST['Submit'])) {
         
         <div>
             <?php
-                if (isset($_SESSION['usersId'])) {
+                if (isset($_SESSION['user'])) {
                     echo "<h2>Made Games</h2>";
                     echo "<p>$user[title]</p>";
                 }
