@@ -49,15 +49,15 @@ if (isset($_POST['Search'])) {
             <input type="submit" name="Search">
         </form>
         
-        <div class="panel panel-default">
+        <div>
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
-                        echo "<div> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
+                        echo "<div class='panel panel-default'> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
                         }
                 } else {
                     forEach ($allGames as $game) {
-                        echo "<div> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
+                        echo "<div class='panel panel-default'> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
                         }
                 }
             ?>
