@@ -37,7 +37,7 @@ if (isset($_POST['Search'])) {
         <link rel='stylesheet' href='main.css'>
     </head>
     
-    <body>
+    <body class="container">
         <?php include 'header.php' ?>
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
