@@ -44,13 +44,13 @@ if (isset($_POST['Search'])) {
         <form method="POST" action="index.php">
             <label>Search by: </label><br>
             <label>Max Number of Players:</label><input name="players" type="number" required><br>
-            <label>Time to Play: </label><input name="time" type="number" required><br>
-            <label>Number of Decks Needed: </label><input name="decks" type="number" required><br>
-            <label>Relaxed: </label><input name="relax" type="checkbox">
+            <label>Max Time to Play: </label><input name="time" type="number" required><br>
+            <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
+            <label>Is Game Relaxed?: </label><input name="relax" type="checkbox">
             <input type="submit" name="Search">
         </form>
         
-        <div>
+        <div class="panel">
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
