@@ -3,25 +3,9 @@
 session_start();
 $current = 'home';
 
-try
-{
-    $dbUrl = getenv('DATABASE_URL');
-    $dbJSON = parse_url($dbUrl);
-    
-    $dbHost = $dbJSON["host"];
-    $dbPort = $dbJSON["port"];
-    $dbUser = $dbJSON["user"];
-    $dbPassword = $dbJSON["pass"];
-    $dbName = ltrim($dbJSON["path"],'/');
-    
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
-}
-catch (PDOException $ex)
-{
-  echo 'Error!: ' . $ex->getMessage();
-  die();
-}
+require_once 'dbConnect.php';
+
+$db = dbConnect();
 
 
 if (isset($_POST['Search'])) {
@@ -57,23 +41,23 @@ if (isset($_POST['Search'])) {
         <?php include 'header.php' ?>
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
-            <label>Search by:</label>
-            <label>Number of Players:</label><input name="players" type="number" required>
-            <label>Time to Play:</label><input name="time" type="number" required>
-            <label>Number of Decks Needed:</label><input name="decks" type="number" required>
-            <label>Relaxed:</label><input name="relax" type="checkbox">
-            <input type="submit" name="Search" required>
+            <label>Search by: </label><br>
+            <label>Max Number of Players:</label><input name="players" type="number" required><br>
+            <label>Time to Play: </label><input name="time" type="number" required><br>
+            <label>Number of Decks Needed: </label><input name="decks" type="number" required><br>
+            <label>Relaxed: </label><input name="relax" type="checkbox">
+            <input type="submit" name="Search">
         </form>
         
-        <div>
+        <div class="panel panel-default">
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
-                        echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
+                        echo "<div> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
                         }
                 } else {
                     forEach ($allGames as $game) {
-                        echo "<div> <h2>$game[title]</h2> <p>$game[description]</p>";
+                        echo "<div> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
                         }
                 }
             ?>
