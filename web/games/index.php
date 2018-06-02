@@ -50,7 +50,7 @@ if (isset($_POST['Search'])) {
             <input type="submit" name="Search">
         </form>
         
-        <div class="panel">
+        <div>
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
