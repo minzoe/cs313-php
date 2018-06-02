@@ -55,7 +55,7 @@ if (isset($_POST['Search'])) {
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
-                        if($_SESSION['users']) {
+                        if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
                             . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
                             . "</form>";
@@ -65,7 +65,7 @@ if (isset($_POST['Search'])) {
                 } else {
                     forEach ($allGames as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
-                        if($_SESSION['users']) {
+                        if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
                             . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
                             . "</form>";
