@@ -7,11 +7,24 @@ require_once 'dbConnect.php';
 
 $db = dbConnect();
 
-if (isset($_POST['Submit'])) {
+if (isset($_POST['Login'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
     $query = "SELECT usersId, username, email FROM users WHERE email = :email AND password = :password";
     $stmt = $db->prepare($query);
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+    $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+    $stmt->execute();
+    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+if (isset($_POST['New User'])) {
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+    $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":username", $username, PDO::PARAM_STR);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
@@ -47,6 +60,7 @@ if ($_SESSION['user'] != NULL) {
     
     <body>
         <?php include 'header.php' ?>
+        <div class="container">
         <h1>User Admin</h1>
         
         <div>
@@ -55,9 +69,15 @@ if ($_SESSION['user'] != NULL) {
                     echo "<h2>Users</h2> <p>Username: ".$_SESSION[user][username]."</p> <p>Email: ".$_SESSION[user][email]."</p>";
                 } else {
                     echo "<form method='post' action='admin.php'>"
-                    . "<label>Email:</lable><input type='email' name='email'>"
+                    . "<label>Email:</label><input type='email' name='email'>"
                             . "<label>Password:</label><input type='password' name='pass'>"
-                            . "<input type='submit' name='Submit'>"
+                            . "<input type='submit' name='Login'>"
+                            . "</form>";
+                    echo "<form method='post' action='admin.php'>"
+                            . "<label>Username:</label><input type='text' name='username'>"
+                            . "<label>Email:</lable><input type='email' name='email'>"
+                            . "<label>Password:</label><input type='password' name='pass'>"
+                            . "<input type='submit' name='New User'>"
                             . "</form>";
                 }
             ?>
@@ -84,6 +104,6 @@ if ($_SESSION['user'] != NULL) {
                 }
             ?>
         </div>
-        
+        </div>
     </body>
 </html>

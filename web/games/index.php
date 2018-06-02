@@ -13,7 +13,7 @@ if (isset($_POST['Search'])) {
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_NUMBER_INT);
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
     $relaxed = filter_input(INPUT_POST, 'relax', FILTER_VALIDATE_BOOLEAN);
-    $query = "SELECT title, description FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
+    $query = "SELECT title, description, gamesId FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":players", $players, PDO::PARAM_INT);
     $stmt->bindValue(":time", $time, PDO::PARAM_INT);
@@ -48,18 +48,29 @@ if (isset($_POST['Search'])) {
             <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
-            <br>
         </form>
         
         <div>
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
-                        echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]</div> <div class='panel-body'>$game[description]</div> </div>";
+                        echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
+                        if($_SESSION['users']) {
+                            echo "<form method='POST' action='index.php'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
+                            . "</form>";
+                        };
+                        echo "</div> <div class='panel-body'>$game[description]</div> </div>";
                         }
                 } else {
                     forEach ($allGames as $game) {
-                        echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]</div> <div class='panel-body'>$game[description]</div> </div>";
+                        echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
+                        if($_SESSION['users']) {
+                            echo "<form method='POST' action='index.php'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
+                            . "</form>";
+                        };
+                        echo "</div> <div class='panel-body'>$game[description]</div> </div>";
                         }
                 }
             ?>
