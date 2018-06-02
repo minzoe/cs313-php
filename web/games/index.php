@@ -43,10 +43,10 @@ if (isset($_POST['Search'])) {
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
             <label>Search by: </label><br>
-            <label>Max Number of Players:</label><input name="players" type="number" required><br>
+            <label>Max Number of Players: </label><input name="players" type="number" required><br>
             <label>Max Time to Play: </label><input name="time" type="number" required><br>
             <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
-            <label>Is Game Relaxed?: </label><input name="relax" type="checkbox">
+            <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
         </form>
         
@@ -54,7 +54,7 @@ if (isset($_POST['Search'])) {
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
-                        echo "<div> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
+                        echo "<div class='panel panel-default> <h2 class='panel-heading'>$game[title]</h2> <p class='panel-body'>$game[description]</p>";
                         }
                 } else {
                     forEach ($allGames as $game) {
