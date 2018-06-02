@@ -21,11 +21,28 @@ if (isset($_POST['Search'])) {
     $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
 } else {
     $query = "SELECT title, description FROM games";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $allGames = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
+}
+
+if (isset($_POST['addGame'])) {
+    $gameId = filter_input(INPUT_POST, 'gameId', FILTER_SANITIZE_EMAIL);
+    $userId = $_SESSION['user']['userId'];
+    $query = "INSERT INTO savedGame (usersId, gamesId) VALUES (:usersId, :gamesId)";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":usersId", $userId, PDO::PARAM_STR);
+    $stmt->bindValue(":gamesId", $gameId, PDO::PARAM_STR);
+    $stmt->execute();
+    $rowChange = $stmt->rowCount();
+    if($rowChange === 1) {
+        $message = "Game Added";
+    }
+            $stmt->closeCursor();
 }
 
 ?>
@@ -49,7 +66,7 @@ if (isset($_POST['Search'])) {
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
         </form>
-        
+        <p>if(isset($message)){echo $message}</p>
         <div>
             <?php 
                 if(isset($_POST['Search'])) {
@@ -57,7 +74,7 @@ if (isset($_POST['Search'])) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame' value='Save Game'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";
@@ -67,7 +84,7 @@ if (isset($_POST['Search'])) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame' value='Save Game'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";

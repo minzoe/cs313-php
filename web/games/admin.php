@@ -16,6 +16,7 @@ if (isset($_POST['Login'])) {
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
     $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
 }
 
 if (isset($_POST['newUser'])) {
@@ -29,6 +30,7 @@ if (isset($_POST['newUser'])) {
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
     $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
 }
 
 if ($_SESSION['user'] != NULL) {
@@ -45,6 +47,7 @@ if ($_SESSION['user'] != NULL) {
     $state->bindValue(":id", $id);
     $state->execute();
     $saved = $state->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
 }
 
 
