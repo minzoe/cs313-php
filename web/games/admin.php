@@ -29,7 +29,10 @@ if (isset($_POST['newUser'])) {
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
+    $rowChange = $stmt->rowCount();
+    if ($rowChange === 1) {
+        $message = "User added please now login.";
+    }
             $stmt->closeCursor();
 }
 
