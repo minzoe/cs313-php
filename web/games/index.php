@@ -54,7 +54,7 @@ if (isset($_POST['Search'])) {
             <?php 
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
-                        echo "<div class='panel panel-default> <div class='panel-heading'>$game[title]</div> <div class='panel-body'>$game[description]</div>";
+                        echo "<div class='panel panel-default'> <div class='panel-heading'>$game[title]</div> <div class='panel-body'>$game[description]</div>";
                         }
                 } else {
                     forEach ($allGames as $game) {
