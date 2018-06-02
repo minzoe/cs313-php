@@ -18,7 +18,7 @@ if (isset($_POST['Login'])) {
     $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-if (isset($_POST['New User'])) {
+if (isset($_POST['newUser'])) {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
@@ -71,13 +71,13 @@ if ($_SESSION['user'] != NULL) {
                     echo "<form method='post' action='admin.php'>"
                     . "<label>Email:</label><input type='email' name='email'>"
                             . "<label>Password:</label><input type='password' name='pass'>"
-                            . "<input type='submit' name='Login'>"
+                            . "<input type='submit' name='Login' value='Login'>"
                             . "</form>";
                     echo "<form method='post' action='admin.php'>"
                             . "<label>Username:</label><input type='text' name='username'>"
                             . "<label>Email:</lable><input type='email' name='email'>"
                             . "<label>Password:</label><input type='password' name='pass'>"
-                            . "<input type='submit' name='New User'>"
+                            . "<input type='submit' name='newUser' value='Create User'>"
                             . "</form>";
                 }
             ?>
