@@ -32,6 +32,8 @@ if (isset($_POST['newUser'])) {
     $rowChange = $stmt->rowCount();
     if ($rowChange === 1) {
         $message = "User added please now login.";
+    } else {
+        $message = "There was an error please try again.";
     }
             $stmt->closeCursor();
 }
@@ -68,7 +70,7 @@ if ($_SESSION['user'] != NULL) {
         <?php include 'header.php' ?>
         <div class="container">
         <h1>User Admin</h1>
-        
+        <p><?php if(isset($message)){echo $message;} ?></p>
         <div>
             <?php 
                 if (isset($_SESSION['user'])) {
