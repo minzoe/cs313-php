@@ -48,6 +48,7 @@ if (isset($_POST['Search'])) {
             <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
+            <br>
         </form>
         
         <div>
