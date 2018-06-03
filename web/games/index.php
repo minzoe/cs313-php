@@ -68,7 +68,7 @@ if (isset($_POST['addGame'])) {
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
         </form>
-        <p><?php if(isset($message)){echo $message;} ?></p>
+        <p><?php if(isset($message)){echo $message;} echo $_SESSION['user']['usersid']?></p>
         <div>
             <?php 
                 if(isset($_POST['Search'])) {
