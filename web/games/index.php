@@ -13,7 +13,7 @@ if (isset($_POST['Search'])) {
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_NUMBER_INT);
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
     $relaxed = filter_input(INPUT_POST, 'relax', FILTER_VALIDATE_BOOLEAN);
-    $query = "SELECT title, description, gamesId FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
+    $query = "SELECT title, description, gamesid FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":players", $players, PDO::PARAM_INT);
     $stmt->bindValue(":time", $time, PDO::PARAM_INT);
@@ -23,7 +23,7 @@ if (isset($_POST['Search'])) {
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
 } else {
-    $query = "SELECT title, description FROM games";
+    $query = "SELECT title, description, gamesid FROM games";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $allGames = $stmt->fetchAll(PDO::FETCH_ASSOC);
