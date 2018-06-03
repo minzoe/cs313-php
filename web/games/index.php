@@ -32,7 +32,7 @@ if (isset($_POST['Search'])) {
 
 if (isset($_POST['addGame'])) {
     $gameId = filter_input(INPUT_POST, 'gameId', FILTER_SANITIZE_EMAIL);
-    $userId = $_SESSION['user']['userId'];
+    $userId = $_SESSION['user']['userid'];
     var_dump($userId);
     exit;
     $query = "INSERT INTO savedGames (usersid, gamesid) VALUES (:usersId, :gamesId)";
