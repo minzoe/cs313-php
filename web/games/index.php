@@ -32,9 +32,7 @@ if (isset($_POST['Search'])) {
 
 if (isset($_POST['addGame'])) {
     $gameId = filter_input(INPUT_POST, 'gameId', FILTER_SANITIZE_EMAIL);
-    $userId = $_SESSION['user']['userid'];
-    var_dump($userId);
-    exit;
+    $userId = $_SESSION['user']['usersid'];
     $query = "INSERT INTO savedGames (usersid, gamesid) VALUES (:usersId, :gamesId)";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":usersId", $userId, PDO::PARAM_STR);
@@ -68,7 +66,7 @@ if (isset($_POST['addGame'])) {
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search">
         </form>
-        <p><?php if(isset($message)){echo $message;} echo $_SESSION['user']['usersid']?></p>
+        <p><?php if(isset($message)){echo $message;}?></p>
         <div>
             <?php 
                 if(isset($_POST['Search'])) {
