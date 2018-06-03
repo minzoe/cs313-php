@@ -21,19 +21,21 @@ if (isset($_POST['Search'])) {
     $stmt->bindValue(":relaxed", $relaxed, PDO::PARAM_BOOL);
     $stmt->execute();
     $searched = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
+    $stmt->closeCursor();
 } else {
     $query = "SELECT title, description FROM games";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $allGames = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
+    $stmt->closeCursor();
 }
 
 if (isset($_POST['addGame'])) {
     $gameId = filter_input(INPUT_POST, 'gameId', FILTER_SANITIZE_EMAIL);
     $userId = $_SESSION['user']['userId'];
-    $query = "INSERT INTO savedGame (usersId, gamesId) VALUES (:usersId, :gamesId)";
+    var_dump($userId);
+    exit;
+    $query = "INSERT INTO savedGames (usersid, gamesid) VALUES (:usersId, :gamesId)";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":usersId", $userId, PDO::PARAM_STR);
     $stmt->bindValue(":gamesId", $gameId, PDO::PARAM_STR);
@@ -42,7 +44,7 @@ if (isset($_POST['addGame'])) {
     if($rowChange === 1) {
         $message = "Game Added";
     }
-            $stmt->closeCursor();
+    $stmt->closeCursor();
 }
 
 ?>

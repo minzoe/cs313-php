@@ -82,3 +82,6 @@ INSERT INTO savedGames (usersId, gamesId) VALUES
 SELECT username, u.usersId, title, g.usersId, s.usersId FROM users u
     INNER JOIN savedGames s ON u.usersId = s.usersId
     INNER JOIN games g ON s.gamesId = g.gamesId;
+
+
+DELETE FROM users WHERE username = 'testUser';
