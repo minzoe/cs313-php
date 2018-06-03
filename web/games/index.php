@@ -74,7 +74,7 @@ if (isset($_POST['addGame'])) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame' value='Save Game'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";
@@ -84,7 +84,7 @@ if (isset($_POST['addGame'])) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesId]'><input type='submit' name='addGame' value='Save Game'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";
