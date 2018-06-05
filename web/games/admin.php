@@ -10,19 +10,26 @@ $db = dbConnect();
 if (isset($_POST['Login'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    $query = "SELECT usersId, username, email FROM users WHERE email = :email AND password = :password";
+    $query = "SELECT usersId, username, email FROM users WHERE email = :email";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
-    $stmt->bindValue(":password", $password, PDO::PARAM_STR);
     $stmt->execute();
-    $_SESSION['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    $hashCheck = password_verify($password, $user['password']);
+    if ($hashCheck) {
+        $_SESSION['user'] = $user;
+    } else {
+        $message = "Username or password is wrong";
+        exit;
+    }    
 }
 
 if (isset($_POST['newUser'])) {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_EMAIL);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+    $password = password_hash($password, PASSWORD_DEFAULT);
     $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":username", $username, PDO::PARAM_STR);
@@ -35,7 +42,7 @@ if (isset($_POST['newUser'])) {
     } else {
         $message = "There was an error please try again.";
     }
-            $stmt->closeCursor();
+    $stmt->closeCursor();
 }
 
 if ($_SESSION['user'] != NULL) {
@@ -52,7 +59,7 @@ if ($_SESSION['user'] != NULL) {
     $state->bindValue(":id", $id);
     $state->execute();
     $saved = $state->fetchAll(PDO::FETCH_ASSOC);
-            $stmt->closeCursor();
+    $stmt->closeCursor();
 }
 
 
