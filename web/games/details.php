@@ -47,7 +47,7 @@ if (isset($_POST['addGame'])) {
         <p><strong>Instructions:</strong> <?php echo $game['instructions'];?></p>
         <?php if($_SESSION['user']) {
             echo "<form method='POST' action='index.php'>"
-            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
+            . "<input type='hidden' name='gameId' value='$id'><input type='submit' name='addGame' value='Save Game'>"
             . "</form>";
             };
         ?>
