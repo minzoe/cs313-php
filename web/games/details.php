@@ -5,9 +5,7 @@ require_once 'dbConnect.php';
 $db = dbConnect();
 
 $id = filter_input(INPUT_GET, 'gameId', FILTER_SANITIZE_NUMBER_INT);
-var_dump($id);
-exit;
-$query = "SELECT title, description, instructions, numOfPlayers, timeLength, numOfDecks, relaxed FROM games WHERE gamesId = :id";
+$query = "SELECT title, description, instructions, numofplayers, timelength, numofdecks, relaxed FROM games WHERE gamesid = :id";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":id", $id, PDO::PARAM_INT);
     $stmt->execute();
