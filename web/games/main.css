@@ -29,6 +29,7 @@ footer {
 
 input[type='number'] {
     width: 2rem;
+    margin-left: 5em;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
