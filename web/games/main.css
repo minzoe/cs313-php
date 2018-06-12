@@ -40,10 +40,9 @@ footer {
 input[type='number'] {
     width: 2.5em;
     height: 1.5em;
-    margin-left: 0.5em;
 }
 
-input[type='checkbox'] {
+input {
     margin-left: 0.5em;
 }
 
