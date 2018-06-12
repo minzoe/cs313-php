@@ -73,11 +73,11 @@ if (isset($_POST['addGame'])) {
                     forEach ($searched as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
                         echo "<form method='GET' action='details.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details' class='btn btn-primary'>"
                             . "</form>";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game' class='btn btn-primary'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";
@@ -86,11 +86,11 @@ if (isset($_POST['addGame'])) {
                     forEach ($allGames as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
                         echo "<form method='GET' action='details.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details' class='btn btn-primary'>"
                             . "</form>";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
-                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game' class='btn btn-primary'>"
                             . "</form>";
                         };
                         echo "</div> <div class='panel-body'>$game[description]</div> </div>";
