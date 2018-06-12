@@ -25,13 +25,13 @@ $query = "SELECT title, description, instructions, numofplayers, timelength, num
     <body>
         <?php include 'header.php' ?>
         <div class="container">
-        <h1><?php $game[title];?></h1>
-        <p>Minimum Number of Players: <?php $game[numOfPlayers];?></p>
-        <p>Maximum Time Length: <?php $game[timeLength];?></p>
-        <p>Max Number of Decks: <?php $game[numOfDecks];?></p>
-        <p>Relaxed?: <?php $game[relaxed];?></p>
-        <p>Description: <?php $game[description];?></p>
-        <p>Instructions: <?php $game[instructions];?></p>
+        <h1><?php $game['title'];?></h1>
+        <p>Minimum Number of Players: <?php $game['numOfPlayers'];?></p>
+        <p>Maximum Time Length: <?php $game['timeLength'];?></p>
+        <p>Max Number of Decks: <?php $game['numOfDecks'];?></p>
+        <p>Relaxed?: <?php $game['relaxed'];?></p>
+        <p>Description: <?php $game['description'];?></p>
+        <p>Instructions: <?php $game['instructions'];?></p>
         </div>
     </body>
 </html>
