@@ -10,7 +10,7 @@ $db = dbConnect();
 if (isset($_POST['Login'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    $query = "SELECT usersid, username, email FROM users WHERE email = :email";
+    $query = "SELECT usersid, username, email, password FROM users WHERE email = :email";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
