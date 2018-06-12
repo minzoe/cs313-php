@@ -29,7 +29,11 @@ footer {
 
 input[type='number'] {
     width: 2rem;
-    margin-left: 5em;
+    margin-left: 1em;
+}
+
+input[type='checkbox'] {
+    margin-left: 1em;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
