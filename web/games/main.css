@@ -8,6 +8,9 @@ body {
     border-radius: 0;
     background-color: #0006b1;
     border-color: #0006b1;
+}
+
+.navbar-inverse .navbar-nav>li>a {
     color: #ffffff;
 }
 
