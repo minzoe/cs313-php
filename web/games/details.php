@@ -11,8 +11,6 @@ $query = "SELECT title, description, instructions, numofplayers, timelength, num
     $stmt->execute();
     $game = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    var_dump($game);
-    exit;
 ?>
 <!DOCTYPE html>
 <html>
