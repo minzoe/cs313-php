@@ -13,7 +13,7 @@ if (isset($_POST['Search'])) {
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_NUMBER_INT);
     $decks = filter_input(INPUT_POST, 'decks', FILTER_SANITIZE_NUMBER_INT);
     $relaxed = filter_input(INPUT_POST, 'relax', FILTER_VALIDATE_BOOLEAN);
-    $query = "SELECT title, description, gamesid FROM games WHERE numOfPlayers = :players AND timeLength = :time AND numOfDecks = :decks AND relaxed = :relaxed";
+    $query = "SELECT title, description, gamesid FROM games WHERE numOfPlayers >= :players AND timeLength <= :time AND numOfDecks <= :decks AND relaxed = :relaxed";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":players", $players, PDO::PARAM_INT);
     $stmt->bindValue(":time", $time, PDO::PARAM_INT);
@@ -60,7 +60,7 @@ if (isset($_POST['addGame'])) {
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
             <label>Search by: </label><br>
-            <label>Max Number of Players: </label><input name="players" type="number" required><br>
+            <label>Min Number of Players: </label><input name="players" type="number" required><br>
             <label>Max Time to Play: </label><input name="time" type="number" required><br>
             <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
@@ -72,6 +72,9 @@ if (isset($_POST['addGame'])) {
                 if(isset($_POST['Search'])) {
                     forEach ($searched as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title] ";
+                        echo "<form method='GET' action='details.php'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details'>"
+                            . "</form>";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
                             . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
@@ -82,6 +85,9 @@ if (isset($_POST['addGame'])) {
                 } else {
                     forEach ($allGames as $game) {
                         echo "<div class='panel panel-default'><div class='panel-heading'>$game[title]";
+                        echo "<form method='GET' action='details.php'>"
+                            . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='gameDetail' value='View Details'>"
+                            . "</form>";
                         if($_SESSION['user']) {
                             echo "<form method='POST' action='index.php'>"
                             . "<input type='hidden' name='gameId' value='$game[gamesid]'><input type='submit' name='addGame' value='Save Game'>"
