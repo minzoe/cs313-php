@@ -60,16 +60,10 @@ if (isset($_POST['addGame'])) {
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
             <label>Search by: </label><br>
-            <div>
-                <label class="pull-left">Max Number of Players: </label><input name="players" type="number" required class="pull-right"><br>
-            </div>
-            <div>
-            <label class="pull-left">Max Time to Play: </label><input name="time" type="number" required class="pull-right"><br></div>
-            <div>
-            <label class="pull-left">Max Number of Decks Needed: </label><input name="decks" type="number" required class="pull-right"><br></div>
-            <div>
-            <label class="pull-left">Is Game Relaxed?: </label><input name="relax" type="checkbox" class="pull-right"><br>
-            </div>
+                <label>Max Number of Players: </label><input name="players" type="number" required><br>
+            <label>Max Time to Play: </label><input name="time" type="number" required><br>
+            <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
+            <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
             <input type="submit" name="Search" class="btn btn-primary">
         </form>
         <p><?php if(isset($message)){echo $message;}?></p>
