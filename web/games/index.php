@@ -60,7 +60,7 @@ if (isset($_POST['addGame'])) {
         <h1>Card Games</h1>
         <form method="POST" action="index.php">
             <label>Search by: </label><br>
-                <label>Max Number of Players: </label><input name="players" type="number" required><br>
+            <label class="mr-1">Max Number of Players: </label><input name="players" type="number" required><br>
             <label>Max Time to Play: </label><input name="time" type="number" required><br>
             <label>Max Number of Decks Needed: </label><input name="decks" type="number" required><br>
             <label>Is Game Relaxed?: </label><input name="relax" type="checkbox"><br>
