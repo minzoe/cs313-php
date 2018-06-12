@@ -27,7 +27,7 @@ footer {
     padding: 15px;
 }
 
-input {
+input[type='number'] {
     width: 2rem;
 }
 
