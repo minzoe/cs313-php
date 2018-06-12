@@ -71,6 +71,7 @@ if ($_SESSION['user'] != NULL) {
         <title>Admin | Card Games</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">        
         <link rel='stylesheet' href='main.css'>
+        <script src="main.js">
     </head>
     
     <body>
@@ -83,17 +84,19 @@ if ($_SESSION['user'] != NULL) {
                 if (isset($_SESSION['user'])) {
                     echo "<h2>Users</h2> <p>Username: ".$_SESSION[user][username]."</p> <p>Email: ".$_SESSION[user][email]."</p>";
                 } else {
-                    echo "<form method='post' action='admin.php'>"
+                    echo "<form method='post' action='admin.php' id='loginUser'>"
                     . "<label>Email:</label><input type='email' name='email'><br>"
                             . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='Login' value='Login' class='btn btn-primary'>"
                             . "</form>";
-                    echo "<form method='post' action='admin.php'>"
+                    echo "<button id='showsignUpUser'>Sign Up</button>";
+                    echo "<form method='post' action='admin.php' class='hide' id='signUpUser'>"
                             . "<label>Username:</label><input type='text' name='username'><br>"
                             . "<label>Email:</lable><input type='email' name='email'><br>"
                             . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='newUser' value='Create User' class='btn btn-primary'>"
                             . "</form>";
+                    echo "<button id='showLoginUser'>Log In</button>";
                 }
             ?>
         </div>
