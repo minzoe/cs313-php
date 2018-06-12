@@ -17,9 +17,6 @@ if (isset($_POST['Login'])) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     $hashCheck = password_verify($password, $user['password']);
-    var_dump($password);
-    var_dump($user['password']);
-    exit;
     if ($hashCheck) {
         $_SESSION['user'] = $user;
     } else {
