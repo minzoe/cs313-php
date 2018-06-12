@@ -24,12 +24,12 @@ $query = "SELECT title, description, instructions, numofplayers, timelength, num
         <?php include 'header.php' ?>
         <div class="container">
         <h1><?php echo $game['title'];?></h1>
-        <p>Minimum Number of Players: <?php echo $game['numOfPlayers'];?></p>
-        <p>Maximum Time Length: <?php echo $game['timeLength'];?></p>
-        <p>Max Number of Decks: <?php echo $game['numOfDecks'];?></p>
-        <p>Relaxed?: <?php echo $game['relaxed'];?></p>
-        <p>Description: <?php echo $game['description'];?></p>
-        <p>Instructions: <?php echo $game['instructions'];?></p>
+        <p><strong>Minimum Number of Players:</strong> <?php echo $game['numOfPlayers'];?></p>
+        <p><strong>Maximum Time Length:</strong> <?php echo $game['timeLength'];?></p>
+        <p><strong>Max Number of Decks:</strong> <?php echo $game['numOfDecks'];?></p>
+        <p><strong>Relaxed?:</strong> <?php echo $game['relaxed'];?></p>
+        <p><strong>Description:</strong> <?php echo $game['description'];?></p>
+        <p><strong>Instructions:</strong> <?php echo $game['instructions'];?></p>
         </div>
     </body>
 </html>
