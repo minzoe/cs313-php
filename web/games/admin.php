@@ -86,13 +86,13 @@ if ($_SESSION['user'] != NULL) {
                     echo "<form method='post' action='admin.php'>"
                     . "<label>Email:</label><input type='email' name='email'>"
                             . "<label>Password:</label><input type='password' name='pass'>"
-                            . "<input type='submit' name='Login' value='Login'>"
+                            . "<input type='submit' name='Login' value='Login' class='btn btn-primary'>"
                             . "</form>";
                     echo "<form method='post' action='admin.php'>"
                             . "<label>Username:</label><input type='text' name='username'>"
                             . "<label>Email:</lable><input type='email' name='email'>"
                             . "<label>Password:</label><input type='password' name='pass'>"
-                            . "<input type='submit' name='newUser' value='Create User'>"
+                            . "<input type='submit' name='newUser' value='Create User' class='btn btn-primary'>"
                             . "</form>";
                 }
             ?>
