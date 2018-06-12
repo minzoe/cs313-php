@@ -24,9 +24,9 @@ $query = "SELECT title, description, instructions, numofplayers, timelength, num
         <?php include 'header.php' ?>
         <div class="container">
         <h1><?php echo $game['title'];?></h1>
-        <p><strong>Minimum Number of Players:</strong> <?php echo $game['numOfPlayers'];?></p>
-        <p><strong>Maximum Time Length:</strong> <?php echo $game['timeLength'];?></p>
-        <p><strong>Max Number of Decks:</strong> <?php echo $game['numOfDecks'];?></p>
+        <p><strong>Minimum Number of Players:</strong> <?php echo $game['numofplayers'];?></p>
+        <p><strong>Maximum Time Length:</strong> <?php echo $game['timelength'];?></p>
+        <p><strong>Max Number of Decks:</strong> <?php echo $game['numofdecks'];?></p>
         <p><strong>Relaxed?:</strong> <?php echo $game['relaxed'];?></p>
         <p><strong>Description:</strong> <?php echo $game['description'];?></p>
         <p><strong>Instructions:</strong> <?php echo $game['instructions'];?></p>
