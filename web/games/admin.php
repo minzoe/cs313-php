@@ -10,15 +10,13 @@ $db = dbConnect();
 if (isset($_POST['Login'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
-    $query = "SELECT usersId, username, email FROM users WHERE email = :email";
+    $query = "SELECT usersid, username, email FROM users WHERE email = :email";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     $hashCheck = password_verify($password, $user['password']);
-    var_dump($hashCheck);
-    exit;
     if ($hashCheck) {
         $_SESSION['user'] = $user;
     } else {
