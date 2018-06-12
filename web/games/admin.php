@@ -84,14 +84,14 @@ if ($_SESSION['user'] != NULL) {
                     echo "<h2>Users</h2> <p>Username: ".$_SESSION[user][username]."</p> <p>Email: ".$_SESSION[user][email]."</p>";
                 } else {
                     echo "<form method='post' action='admin.php'>"
-                    . "<label>Email:</label><input type='email' name='email'>"
-                            . "<label>Password:</label><input type='password' name='pass'>"
+                    . "<label>Email:</label><input type='email' name='email'><br>"
+                            . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='Login' value='Login' class='btn btn-primary'>"
                             . "</form>";
                     echo "<form method='post' action='admin.php'>"
-                            . "<label>Username:</label><input type='text' name='username'>"
-                            . "<label>Email:</lable><input type='email' name='email'>"
-                            . "<label>Password:</label><input type='password' name='pass'>"
+                            . "<label>Username:</label><input type='text' name='username'><br>"
+                            . "<label>Email:</lable><input type='email' name='email'><br>"
+                            . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='newUser' value='Create User' class='btn btn-primary'>"
                             . "</form>";
                 }
