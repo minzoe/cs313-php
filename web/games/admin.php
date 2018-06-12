@@ -96,7 +96,7 @@ if ($_SESSION['user'] != NULL) {
                             . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='newUser' value='Create User' class='btn btn-primary'>"
                             . "</form>";
-                    echo "<button id='showLoginUser'>Log In</button>";
+                    echo "<button id='showLoginUser' onclick='showLogin()'>Log In</button>";
                 }
             ?>
         </div>
