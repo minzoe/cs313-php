@@ -89,14 +89,14 @@ if ($_SESSION['user'] != NULL) {
                             . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='Login' value='Login' class='btn btn-primary'>"
                             . "</form>";
-                    echo "<button id='showsignUpUser' onclick='showSignup()'>Sign Up</button>";
+                    echo "<button id='showsignUpUser' onclick='showSignup()' class='btn btn-primary'>Sign Up</button>";
                     echo "<form method='post' action='admin.php' class='hide' id='signUpUser'>"
                             . "<label>Username:</label><input type='text' name='username'><br>"
                             . "<label>Email:</lable><input type='email' name='email'><br>"
                             . "<label>Password:</label><input type='password' name='pass'><br>"
                             . "<input type='submit' name='newUser' value='Create User' class='btn btn-primary'>"
                             . "</form>";
-                    echo "<button id='showLoginUser' onclick='showLogin()'>Log In</button>";
+                    echo "<button id='showLoginUser' onclick='showLogin()' class='btn btn-primary'>Login Instead</button>";
                 }
             ?>
         </div>
