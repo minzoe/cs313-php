@@ -30,8 +30,6 @@ if (isset($_POST['newUser'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
     $password = password_hash($password, PASSWORD_DEFAULT);
-    var_dump($password);
-    exit;
     $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
     $stmt = $db->prepare($query);
     $stmt->bindValue(":username", $username, PDO::PARAM_STR);
