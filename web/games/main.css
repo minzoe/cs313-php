@@ -28,7 +28,8 @@ footer {
 }
 
 input[type='number'] {
-    width: 3rem;
+    width: 2em;
+    height: 2em;
     margin-left: 1em;
 }
 
