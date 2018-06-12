@@ -43,7 +43,11 @@ input[type='number'] {
     margin-left: 0.5em;
 }
 
-input, input[type='checkbox'] {
+input {
+    margin-left: 0.5em;
+}
+
+input[type='checkbox'] {
     margin-left: 0.5em;
 }
 
