@@ -6,7 +6,6 @@ function showSignup() {
 };
 
 function showLogin() {
-    alert('Show Login Called');
     document.getElementById('signUpUser').classList.add('hide');
     document.getElementById('showLoginUser').classList.add('hide');
     document.getElementById('loginUser').classList.remove('hide');
