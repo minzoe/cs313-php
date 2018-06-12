@@ -58,7 +58,7 @@ if (isset($_POST['addGame'])) {
         <?php include 'header.php' ?>
         <div class="container">
         <h1>Card Games</h1>
-        <form method="POST" action="index.php" class="col-sm-2">
+        <form method="POST" action="index.php" class="col-sm-8">
             <label>Search by: </label><br>
             <div>
                 <label class="pull-left">Max Number of Players: </label><input name="players" type="number" required class="pull-right"><br>
