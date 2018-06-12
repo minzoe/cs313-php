@@ -19,6 +19,7 @@ if (isset($_POST['Login'])) {
     $hashCheck = password_verify($password, $user['password']);
     if ($hashCheck) {
         $_SESSION['user'] = $user;
+        header("Refresh:0");
     } else {
         $message = "Username or password is wrong";
         exit;
